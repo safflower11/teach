@@ -64,4 +64,21 @@ public class TeacherController {
         List<Teacher> search = teacherService.search(key, word);
         return MessageUtil.success(search);
     }
+    @GetMapping("/deleteBatch")
+    public Message deleteBatch(int[] ids){
+        for(int id:ids){
+            teacherService.deleteById(id);
+        }
+        return MessageUtil.success();
+    }
+    /*@GetMapping("/deleteBatch1")
+    public Message deleteBatch1(String ids){
+        String[] id = ids.split(",");
+        for (String s:id) {
+            teacherService.deleteById((int) s);
+        }
+        System.out.println(ids);
+
+        return MessageUtil.success();
+    }*/
 }
