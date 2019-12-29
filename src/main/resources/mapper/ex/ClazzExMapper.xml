@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.ClazzExMapper">
+    <resultMap id="cdt" type="com.lut.teach.bean.ex.ClazzEx">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" property="name" />
+        <result column="serve_number" property="serveNumber" />
+        <result column="student_number" property="studentNumber" />
+        <result column="description"  property="description" />
+        <association property="department_id" column="department" select="sd"></association>
+        <association property="teacher_id" column="teacher" select="st"></association>
+    </resultMap>
+    <select id="selectAll" resultMap="cdt">
+         select * from briup_clazz
+    </select>
+    <select id="sd" resultType="com.lut.teach.bean.Department">
+        select * from briup_department where id = #{id}
+    </select>
+    <select id="st" resultType="com.lut.teach.bean.Teacher">
+        select * from briup_teacher where id = #{id}
+    </select>
+</mapper>
