@@ -1,6 +1,7 @@
 package com.lut.teach.bean.ex;
 
 import com.lut.teach.bean.Department;
+import com.lut.teach.bean.Region;
 import com.lut.teach.bean.Teacher;
 import com.lut.teach.bean.TeacherExample;
 
@@ -14,6 +15,15 @@ public class ClazzEx implements Serializable {
     private String description;
     private Department department;
     private Teacher teacher;
+    private Region region;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -61,5 +71,13 @@ public class ClazzEx implements Serializable {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 }
