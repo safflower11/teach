@@ -22,16 +22,16 @@ public class DepartmentController {
     @Autowired
     private IDepartmentService iDepartmentService;
 
-    @GetMapping("/deletedepartment")
+    @GetMapping("/deleteById")
     @ApiOperation(value="根据id删除班级信息")
     public Message deteledepartment(int id){
         iDepartmentService.deletedepartmentById(id);
         return MessageUtil.success();
 
     }
-    @GetMapping("/findalldepartment")
+    @GetMapping("/findall")
     @ApiOperation(value="查询所有班级信息")
-    public Message findall(){
+    public Message findAll(){
        List<DepartmentEX> lists= iDepartmentService.findAlldepartment();
         return MessageUtil.success(lists);
     }
@@ -47,12 +47,31 @@ public class DepartmentController {
 
     @PostMapping("/add")
     @ApiOperation(value = "添加班级信息")
-    public Message add(){
-        Department department = new Department();
+
+    public Message add(Department department){
         iDepartmentService.saveOrUpdatedepartment(department);
         return MessageUtil.success();
     }
 
+
+    @PostMapping("/update")
+    @ApiOperation(value = "修改班级信息")
+    public Message update(Department department){
+        iDepartmentService.saveOrUpdatedepartment(department);
+        return MessageUtil.success();
+    }
+
+    @GetMapping("/deleteall")
+    @ApiOperation(value = "删除所有id")
+    //String ids
+    // String [] id=ids.split(regex:",");
+    //for (String s : id){ }
+    public Message delete(int[] ids){
+        for(int id : ids){
+           iDepartmentService.deletedepartmentById(id);
+        }
+        return MessageUtil.success();
+    }
 
 
 

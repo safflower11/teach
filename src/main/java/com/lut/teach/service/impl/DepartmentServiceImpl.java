@@ -31,13 +31,13 @@ public class DepartmentServiceImpl implements IDepartmentService {
             return findAlldepartment();
         }else if((kay==null || "".equals(kay)) && !"".equals(word)){
             word="%" + word +"%";
-            departmentEXMapper.selectIdOrName(word);
+            return departmentEXMapper.selectIdOrName(word);
         }else if ("id".equals(kay)){
             word="%" + word +"%";
-            departmentEXMapper.selectId(word);
+            return departmentEXMapper.selectId(word);
         }else if ("name".equals(kay)){
             word="%" + word +"%";
-            departmentEXMapper.selectName(word);
+            return departmentEXMapper.selectName(word);
         }
         return null;
     }
