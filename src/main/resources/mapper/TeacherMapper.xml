@@ -208,4 +208,14 @@
       startday = #{startday,jdbcType=DATE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectNameOrSex" resultMap="BaseResultMap">
+        select * from briup_teacher where name like #{word} or gender like #{word}
+    </select>
+  <select id="selectName" resultMap="BaseResultMap">
+        select * from briup_teacher WHERE name like #{word}
+    </select>
+  <select id="selectSex" resultMap="BaseResultMap">
+        select * from  briup_teacher WHERE gender like #{word}
+    </select>
 </mapper>

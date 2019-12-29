@@ -27,4 +27,10 @@ public interface TeacherMapper {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    List<Teacher> selectNameOrSex(String word);
+
+    List<Teacher> selectName(String word);
+
+    List<Teacher> selectSex(String word);
 }
