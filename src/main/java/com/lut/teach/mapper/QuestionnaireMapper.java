@@ -33,4 +33,6 @@ public interface QuestionnaireMapper {
     int updateByPrimaryKeyWithBLOBs(Questionnaire record);
 
     int updateByPrimaryKey(Questionnaire record);
+
+    List<Questionnaire> search(String word);
 }
