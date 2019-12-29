@@ -12,7 +12,6 @@ public class DepartmentEX {
 
     private Region region;
 
-
     public Integer getId() {
         return id;
     }
@@ -44,6 +43,5 @@ public class DepartmentEX {
     public void setRegion(Region region) {
         this.region = region;
     }
-
 
 }

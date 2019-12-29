@@ -10,15 +10,24 @@
         <association property="department" column="department_id" select="sd"></association>
         <association property="teacher" column="teacher_id" select="st"></association>
     </resultMap>
+    <resultMap id="sde" type="com.lut.teach.bean.ex.DepartmentEX">
+        <id column="id" property="id" />
+        <result column="name"  property="name" />
+        <result column="description"  property="description" />
+        <association property="region"  column="region_id" select="sr"></association>
+    </resultMap>
 
     <select id="selectAll" resultMap="cdt">
          select * from briup_clazz
     </select>
-    <select id="sd" resultType="com.lut.teach.bean.Department">
+    <select id="sd" resultMap="sde">
         select * from briup_department where id = #{id}
     </select>
     <select id="st" resultType="com.lut.teach.bean.Teacher">
         select * from briup_teacher where id = #{id}
+    </select>
+    <select id="sr" resultType="com.lut.teach.bean.Region">
+        select * from briup_region where id=#{id}
     </select>
     <select id="selectNameOrDescription" resultMap="cdt">
         select * from briup_clazz where author like #{word} or name like #{word}
