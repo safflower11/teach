@@ -1,5 +1,6 @@
 package com.lut.teach.service.impl;
 
+import com.lut.teach.bean.Clazz;
 import com.lut.teach.bean.ex.ClazzEx;
 import com.lut.teach.mapper.ClazzMapper;
 import com.lut.teach.mapper.ex.ClazzExMapper;
@@ -20,5 +21,24 @@ public class ClazzServiceImpl implements IClazzService {
     public List<ClazzEx> selectAll() throws RuntimeException {
         List<ClazzEx> clazzExes= clazzExMapper.selectAll();
         return clazzExes;
+    }
+
+    @Override
+    public void delectById(int id) throws RuntimeException {
+        clazzMapper.deleteByPrimaryKey(id);
+
+    }
+
+    @Override
+    public void saveOrUpdate(Clazz clazz) throws RuntimeException {
+        if(clazz==null){
+            throw new RuntimeException("参数错误");
+        }
+        if(clazz.getId()==null){
+            clazzMapper.insert(clazz);
+        }else {
+            clazzMapper.updateByPrimaryKey(clazz);
+        }
+
     }
 }
