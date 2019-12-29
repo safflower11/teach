@@ -47,4 +47,20 @@ public class ClazzController {
         iClazzService.saveOrUpdate(clazz);
         return MessageUtil.success();
     }
+    @GetMapping("/deleteBatch")
+    @ApiOperation(value = "批量删除")
+    public Message deleteBatch(int[] ids){
+        for (int id:ids){
+            iClazzService.delectById(id);
+            System.out.println(id);
+        }
+        return MessageUtil.success();
+    }
+    @PostMapping("/selectNameOrDescription")
+    @ApiOperation(value = "条件查询")
+    public Message selectNameOrDescription(String key,String word){
+        List<ClazzEx> clazzExes=iClazzService.search(key, word);
+        return MessageUtil.success(clazzExes);
+
+    }
 }

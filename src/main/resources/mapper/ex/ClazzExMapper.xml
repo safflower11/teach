@@ -20,4 +20,13 @@
     <select id="st" resultType="com.lut.teach.bean.Teacher">
         select * from briup_teacher where id = #{id}
     </select>
+    <select id="selectNameOrDescription" resultMap="cdt">
+        select * from briup_clazz where author like #{word} or name like #{word}
+    </select>
+    <select id="selectName" resultMap="cdt">
+        select * from briup_clazz where name like #{word}
+    </select>
+    <select id="selectDescription" resultMap="cdt">
+        select * from briup_clazz where description like #{word}
+    </select>
 </mapper>
