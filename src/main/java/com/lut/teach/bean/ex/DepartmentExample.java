@@ -1,4 +1,4 @@
-package com.lut.teach.bean;
+package com.lut.teach.bean.ex;
 
 import java.util.ArrayList;
 import java.util.List;
