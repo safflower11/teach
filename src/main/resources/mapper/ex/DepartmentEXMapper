@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.DepartmentEXMapper">
+    <resultMap id="all" type="com.lut.teach.bean.ex.DepartmentEX">
+        <id column="id" property="id" />
+        <result column="name"  property="name" />
+        <result column="description"  property="description" />
+        <association property="region"  column="region_id" select="selectregion"></association>
+    </resultMap>
+    <select id="findAll" resultMap="all">
+        select * from briup_department
+    </select>
+    <select id="selectregion" resultType="com.lut.teach.bean.Region">
+        select * from briup_region where id=#{id}
+    </select>
+    <select id="selectIdOrName" resultMap="all">
+        select * from briup_department where id like #{word} or name like #{word}
+    </select>
+    <select id="selectId" resultMap="all">
+        select * from briup_department where id like #{word}
+    </select>
+    <select id="selectName" resultMap="all">
+        select * from briup_department where name like #{word}
+    </select>
+</mapper>
