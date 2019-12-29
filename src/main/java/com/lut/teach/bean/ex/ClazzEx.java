@@ -15,7 +15,6 @@ public class ClazzEx implements Serializable {
     private String description;
     private Department department;
     private Teacher teacher;
-    private Region region;
 
     public Integer getId() {
         return id;
@@ -73,11 +72,4 @@ public class ClazzEx implements Serializable {
         this.teacher = teacher;
     }
 
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
 }
