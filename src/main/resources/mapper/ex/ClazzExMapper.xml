@@ -7,9 +7,10 @@
         <result column="serve_number" property="serveNumber" />
         <result column="student_number" property="studentNumber" />
         <result column="description"  property="description" />
-        <association property="department_id" column="department" select="sd"></association>
-        <association property="teacher_id" column="teacher" select="st"></association>
+        <association property="department" column="department_id" select="sd"></association>
+        <association property="teacher" column="teacher_id" select="st"></association>
     </resultMap>
+
     <select id="selectAll" resultMap="cdt">
          select * from briup_clazz
     </select>
