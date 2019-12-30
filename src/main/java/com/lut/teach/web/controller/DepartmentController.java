@@ -65,7 +65,7 @@ public class DepartmentController {
     @ApiOperation(value = "删除所有id")
     //String ids
     // String [] id=ids.split(regex:",");
-    //for (String s : id){ }
+    //for (String s : id){ } b
     public Message delete(int[] ids){
         for(int id : ids){
            iDepartmentService.deletedepartmentById(id);
