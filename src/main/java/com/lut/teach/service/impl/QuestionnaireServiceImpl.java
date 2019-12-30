@@ -1,8 +1,12 @@
 package com.lut.teach.service.impl;
 
+import com.lut.teach.bean.QqnExample;
 import com.lut.teach.bean.Questionnaire;
 import com.lut.teach.bean.QuestionnaireExample;
+import com.lut.teach.bean.SurveyExample;
+import com.lut.teach.mapper.QqnMapper;
 import com.lut.teach.mapper.QuestionnaireMapper;
+import com.lut.teach.mapper.SurveyMapper;
 import com.lut.teach.service.IQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,10 @@ import java.util.List;
 public class QuestionnaireServiceImpl implements IQuestionnaireService {
     @Autowired
     private QuestionnaireMapper questionnaireMapper;
+    @Autowired
+    private QqnMapper qqnMapper;
+    @Autowired
+    private SurveyMapper surveyMapper;
     @Override
     public List<Questionnaire> findAll() throws RuntimeException {
         QuestionnaireExample questionnaireExample = new QuestionnaireExample();
@@ -21,6 +29,14 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
     @Override
     public void deleteById(int id) throws RuntimeException {
+        QqnExample qqnExample = new QqnExample();
+        qqnExample.createCriteria().andQuestionnaireIdEqualTo(id);
+        qqnMapper.deleteByExample(qqnExample);
+
+        SurveyExample surveyExample = new SurveyExample();
+        surveyExample.createCriteria().andQuestionnaireIdEqualTo(id);
+        surveyMapper.deleteByExample(surveyExample);
+
         questionnaireMapper.deleteByPrimaryKey(id);
 
     }
