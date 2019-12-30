@@ -1,7 +1,10 @@
 package com.lut.teach.web.controller;
 
+import com.lut.teach.bean.Qqn;
 import com.lut.teach.bean.Questionnaire;
 import com.lut.teach.bean.Teacher;
+import com.lut.teach.bean.ex.QqnEx;
+import com.lut.teach.bean.ex.QuestionnaireEX;
 import com.lut.teach.service.IQuestionnaireService;
 import com.lut.teach.util.Message;
 import com.lut.teach.util.MessageUtil;
@@ -80,5 +83,20 @@ public class QuestionnairController {
         }
         return MessageUtil.success();
     }
+    @GetMapping("/showById")
+    @ApiOperation(value = "预览")
+    public Message showById(int id){
+        QuestionnaireEX byId = questionnaireService.showById(id);
+        System.out.println(byId);
+        System.out.println(byId.getQqns());
+        for(Qqn qqn:byId.getQqns()) {
+
+            System.out.println(qqn.getId());
+            QqnEx question = questionnaireService.fingquestion(qqn.getId());
+            return MessageUtil.success(question);
+        }
+        return MessageUtil.success();
+    }
+
 
 }

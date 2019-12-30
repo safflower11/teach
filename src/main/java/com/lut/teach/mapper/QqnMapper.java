@@ -29,4 +29,5 @@ public interface QqnMapper {
     int updateByPrimaryKey(Qqn record);
 
     List<Qqn> selectByQuId(int id);
+
 }

@@ -1,9 +1,13 @@
 package com.lut.teach.service.impl;
 
 import com.lut.teach.bean.*;
+import com.lut.teach.bean.ex.QqnEx;
+import com.lut.teach.bean.ex.QuestionnaireEX;
 import com.lut.teach.mapper.QqnMapper;
 import com.lut.teach.mapper.QuestionnaireMapper;
 import com.lut.teach.mapper.SurveyMapper;
+import com.lut.teach.mapper.ex.Qqn11Mapper;
+import com.lut.teach.mapper.ex.QuestionnaireEXMapper;
 import com.lut.teach.service.IQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,10 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     private QqnMapper qqnMapper;
     @Autowired
     private SurveyMapper surveyMapper;
+    @Autowired
+    private QuestionnaireEXMapper questionnaireEXMapper;
+    @Autowired
+    private Qqn11Mapper qqn11Mapper;
     @Override
     public List<Questionnaire> findAll() throws RuntimeException {
         QuestionnaireExample questionnaireExample = new QuestionnaireExample();
@@ -81,4 +89,21 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     public Questionnaire findid(Questionnaire questionnaire) {
         return questionnaireMapper.findid();
     }
+
+    @Override
+    public QuestionnaireEX showById(int id) throws RuntimeException {
+        return questionnaireEXMapper.showById(id);
+    }
+
+    @Override
+    public List<QuestionnaireEX> show(int id) throws RuntimeException {
+        return questionnaireEXMapper.show(id);
+    }
+
+    @Override
+    public QqnEx fingquestion(int qqnid) throws RuntimeException {
+        return qqn11Mapper.findquestion(qqnid);
+    }
+
+
 }
