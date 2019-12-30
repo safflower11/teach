@@ -1,9 +1,6 @@
 package com.lut.teach.service.impl;
 
-import com.lut.teach.bean.QqnExample;
-import com.lut.teach.bean.Questionnaire;
-import com.lut.teach.bean.QuestionnaireExample;
-import com.lut.teach.bean.SurveyExample;
+import com.lut.teach.bean.*;
 import com.lut.teach.mapper.QqnMapper;
 import com.lut.teach.mapper.QuestionnaireMapper;
 import com.lut.teach.mapper.SurveyMapper;
@@ -70,5 +67,18 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
             return  questionnaireMapper.search(word);
         }
         //return null;
+    }
+
+    @Override
+    public void insert(Integer id, int question_id) {
+        Qqn qqn=new Qqn();
+        qqn.setQuestionId(question_id);
+        qqn.setQuestionnaireId(id);
+        qqnMapper.insert(qqn);
+    }
+
+    @Override
+    public Questionnaire findid(Questionnaire questionnaire) {
+        return questionnaireMapper.findid();
     }
 }

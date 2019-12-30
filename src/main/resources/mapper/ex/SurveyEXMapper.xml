@@ -6,6 +6,6 @@
         <result column="status" property="status"></result>
         <result column="code" property="code" ></result>
         <result column="surveyday"  property="surveyday"></result>
-        git
+
     </resultMap>
 </mapper>
