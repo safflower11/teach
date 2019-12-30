@@ -47,16 +47,24 @@ public class QuestionnairController {
     }
 
     @PostMapping("/add")
-    @ApiOperation(value = "添加教师")
-    public Message insert(Questionnaire questionnaire){
+    @ApiOperation(value = "添加")
+    public Message insert(Questionnaire questionnaire,int[] question_id){
         questionnaireService.saveOrUpdate(questionnaire);
+        Questionnaire questionnaire1=questionnaireService.findid(questionnaire);
+        for(int id:question_id){
+            questionnaireService.insert(questionnaire1.getId(),id);
+        }
         return MessageUtil.success("添加成功");
     }
 
     @PostMapping("/update")
-    @ApiOperation(value = "修改教师")
-    public Message update(Questionnaire questionnaire){
+    @ApiOperation(value = "修改")
+    public Message update(Questionnaire questionnaire,int[] question_id){
         questionnaireService.saveOrUpdate(questionnaire);
+        Questionnaire questionnaire1=questionnaireService.findid(questionnaire);
+        for(int id:question_id){
+            questionnaireService.insert(questionnaire1.getId(),id);
+        }
         return MessageUtil.success("修改成功");
     }
 

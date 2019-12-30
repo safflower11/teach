@@ -234,6 +234,10 @@
 
   <select id="search" resultMap="BaseResultMap">
 
-       select * from briup_questionnaire where id like #{word} or name like #{word} or description like #{word}
+       select * from briup_questionnaire where name like #{word}
+  </select>
+
+  <select id="findid" resultMap="BaseResultMap">
+    select * from briup_questionnaire order by id desc limit 1
   </select>
 </mapper>

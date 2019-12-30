@@ -35,4 +35,6 @@ public interface QuestionnaireMapper {
     int updateByPrimaryKey(Questionnaire record);
 
     List<Questionnaire> search(String word);
+
+    Questionnaire findid();
 }

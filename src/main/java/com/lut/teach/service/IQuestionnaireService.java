@@ -14,4 +14,8 @@ public interface IQuestionnaireService {
     void saveOrUpdate(Questionnaire questionnaire) throws RuntimeException;
 
     List<Questionnaire> search(String word) throws RuntimeException;
+
+    void insert(Integer id, int question_id);
+
+    Questionnaire findid(Questionnaire questionnaire);
 }
