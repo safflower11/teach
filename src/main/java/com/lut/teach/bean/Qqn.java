@@ -1,6 +1,9 @@
 package com.lut.teach.bean;
 
+import com.lut.teach.bean.ex.QuestionEX;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class Qqn implements Serializable {
     private Integer id;
@@ -10,7 +13,7 @@ public class Qqn implements Serializable {
     private Integer questionnaireId;
 
     private static final long serialVersionUID = 1L;
-
+    private List<QuestionEX> questionExs;
     public Integer getId() {
         return id;
     }
@@ -37,6 +40,14 @@ public class Qqn implements Serializable {
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public List<QuestionEX> getQuestionExs() {
+        return questionExs;
+    }
+
+    public void setQuestionExs(List<QuestionEX> questionExs) {
+        this.questionExs = questionExs;
     }
 
     @Override

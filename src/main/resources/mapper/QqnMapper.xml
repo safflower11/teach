@@ -2,10 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lut.teach.mapper.QqnMapper">
   <resultMap id="BaseResultMap" type="com.lut.teach.bean.Qqn">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="question_id" jdbcType="INTEGER" property="questionId" />
-    <result column="questionnaire_id" jdbcType="INTEGER" property="questionnaireId" />
+    <id column="id" property="id" />
+    <result property="questionId" column="question_id" ></result>
+    <result column="questionnaire_id" property="questionnaireId" />
+    <collection property="questionExs"
+                ofType="com.lut.teach.bean.ex.QuestionEX"
+                column="question_id"
+                select="squ"></collection>
   </resultMap>
+  <resultMap id="question" type="com.lut.teach.bean.ex.QuestionEX">
+    <id column="id" property="id"></id>
+    <result column="name" property="name"></result>
+    <result column="type" property="type"></result>
+    <collection property="options"
+                ofType="com.lut.teach.bean.Options"
+                column="id"
+                select="so"></collection>
+  </resultMap>
+  <select id="selectByQuId" resultMap="BaseResultMap">
+       select * from briup_qqn where questionnaire_id = #{id}
+    </select>
+  <select id="squ" resultMap="question">
+        select * from briup_question where id = #{id}
+    </select>
+  <select id="so" resultType="com.lut.teach.bean.Region">
+        select * from briup_options where question_id=#{id}
+    </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -87,9 +109,6 @@
     from briup_qqn
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="selectByQuId" resultType="com.lut.teach.bean.Qqn">
-       select * from briup_qqn where questionnaire_id = #{id}
-    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from briup_qqn
     where id = #{id,jdbcType=INTEGER}

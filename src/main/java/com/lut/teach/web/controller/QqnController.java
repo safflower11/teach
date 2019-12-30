@@ -24,8 +24,6 @@ public class QqnController {
     private IQqnService iQqnService;
     @Autowired
     private IQuestionnaireService iQuestionnaireService;
-    @Autowired
-    private IQuestionService iQuestionService;
     @GetMapping("/selectAll")
     public Message selectAll(){
         List<QqnEx> qqnExes=iQqnService.selectAll();
@@ -46,18 +44,6 @@ public class QqnController {
     @GetMapping("/selectByIdQ")
     public  Message selectByIdQ(int id){
         List<Qqn> qqns=iQqnService.selectById(id);
-        for(Qqn qqn:qqns){
-            int qid=qqn.getId();
-            Qqn qqn1=iQqnService.selectBy(qid);
-            int wid=qqn1.getQuestionId();
-            Question question= iQuestionService.selectById(wid);
-            System.out.println(question.toString());
-            String question1=question.toString();
-            int i=0;
-            i++;
-            String a[]=new String[qqns.size()];
-            a[i]=question1;
-        }
         return MessageUtil.success(qqns);
     }
 }
