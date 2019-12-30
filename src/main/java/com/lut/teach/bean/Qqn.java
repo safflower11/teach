@@ -27,6 +27,18 @@ public class Qqn implements Serializable {
         this.questionnaireId = questionnaireId;
     }
 
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public Integer getQuestionnaireId() {
+        return questionnaireId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

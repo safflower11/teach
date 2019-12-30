@@ -11,5 +11,7 @@ public interface IQqnService {
     void saveOrUpdate(Qqn qqn) throws RuntimeException;
     void insert(int qid,int qqid) throws RuntimeException;
     Questionnaire selectmax() throws RuntimeException;
-    List<QqnEx> selectById(int id) throws RuntimeException;
+    List<Qqn> selectById(int id) throws RuntimeException;
+    Qqn selectBy(int id) throws RuntimeException;
+
 }

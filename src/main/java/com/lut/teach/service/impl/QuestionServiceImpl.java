@@ -61,5 +61,11 @@ public class QuestionServiceImpl implements IQuestionService {
         optionsMapper.deleteByPrimaryKey(id);
     }
 
+    @Override
+    public Question selectById(int id) throws RuntimeException {
+        Question question=questionMapper.selectByPrimaryKey(id);
+        return question;
+    }
+
 
 }

@@ -87,6 +87,9 @@
     from briup_qqn
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByQuId" resultType="com.lut.teach.bean.Qqn">
+       select * from briup_qqn where questionnaire_id = #{id}
+    </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from briup_qqn
     where id = #{id,jdbcType=INTEGER}

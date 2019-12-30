@@ -34,7 +34,4 @@
     <select id="selectmax" resultType="com.lut.teach.bean.Questionnaire">
        select * from briup_questionnaire order by id desc limit 1
     </select>
-    <select id="selectByQuId" resultType="com.lut.teach.bean.ex.QqnEx">
-       select * from briup_qqn where questionnaire_id = #{id}
-    </select>
 </mapper>

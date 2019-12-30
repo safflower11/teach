@@ -12,6 +12,7 @@ public interface IQuestionService {
     void deleteQById(int id) throws RuntimeException;
     void saveOrUpdate(Question question) throws RuntimeException;
     void deleteOById(int id) throws RuntimeException;
+    Question selectById(int id) throws RuntimeException;
 
 
 

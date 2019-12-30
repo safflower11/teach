@@ -49,9 +49,15 @@ public class QqnServiceImpl implements IQqnService {
     }
 
     @Override
-    public List<QqnEx> selectById(int id) throws RuntimeException {
-        List<QqnEx> qqnExes=qqnExMapper.selectByQuId();
-        return qqnExes;
+    public List<Qqn> selectById(int id) throws RuntimeException {
+        List<Qqn> qqns=qqnMapper.selectByQuId(id);
+        return qqns;
+    }
+
+    @Override
+    public Qqn selectBy(int id) throws RuntimeException {
+        Qqn qqn=qqnMapper.selectByPrimaryKey(id);
+        return qqn;
     }
 
 
