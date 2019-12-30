@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/qqn")
-@Api(description = "问卷管理")
+@Api(description = "问卷管理预览")
 public class QqnController {
     @Autowired
     private IQqnService iQqnService;

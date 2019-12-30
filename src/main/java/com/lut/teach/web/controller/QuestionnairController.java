@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/questionnair")
-@Api(description = "问卷管理")
+@Api(description = "问卷管理其他功能")
 public class QuestionnairController {
     @Autowired
     private IQuestionnaireService questionnaireService;
