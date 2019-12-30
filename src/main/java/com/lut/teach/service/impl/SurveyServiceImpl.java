@@ -20,7 +20,7 @@ public class SurveyServiceImpl implements ISurveyService {
     public List<SurveyEX> findAll() throws RuntimeException {
        List<SurveyEX> lists = surveyEXMapper.findAll();
         return lists;
-    }
+}
 
     @Override
     public List<SurveyEX> search(String word) throws RuntimeException {
