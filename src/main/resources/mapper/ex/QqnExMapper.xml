@@ -5,15 +5,15 @@
         <id column="id" property="id" />
         <association property="questionnaire" column="questionnaire_id" select="sqn"></association>
         <collection property="questionExs"
-                    ofType="com.lut.teach.bean.ex.QuestionEx"
+                    ofType="com.lut.teach.bean.ex.QuestionEX"
                     column="question_id"
                     select="squ"></collection>
     </resultMap>
-   <resultMap id="sqo" type="com.lut.teach.bean.ex.QuestionEx">
+   <resultMap id="sqo" type="com.lut.teach.bean.ex.QuestionEX">
         <id column="id"  property="id" />
         <result column="name" property="name" />
         <result column="type" property="type" />
-        <collection property="optionsExs"
+        <collection property="options"
                     ofType="com.lut.teach.bean.ex.OptionsEx"
                     column="id"
                     select="so"></collection>

@@ -1,13 +1,19 @@
 package com.lut.teach.bean.ex;
 
-import java.io.Serializable;
+
+import com.lut.teach.bean.Question;
+
+import javax.swing.text.html.Option;
 import java.util.List;
 
-public class QuestionEx implements Serializable {
+public class QuestionEX {
     private Integer id;
+
     private String name;
+
     private String type;
-    private List<OptionsEx> optionsExs;
+
+    private List<Option> options;
 
     public Integer getId() {
         return id;
@@ -33,11 +39,10 @@ public class QuestionEx implements Serializable {
         this.type = type;
     }
 
-    public List<OptionsEx> getOptionsExs() {
-        return optionsExs;
+    public List<Option> getOptions() {
+        return options;
     }
-
-    public void setOptionsExs(List<OptionsEx> optionsExs) {
-        this.optionsExs = optionsExs;
+    public void setOptions(List<Option> options) {
+        this.options = options;
     }
 }

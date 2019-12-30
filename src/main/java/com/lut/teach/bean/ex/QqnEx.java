@@ -8,7 +8,7 @@ import java.util.List;
 public class QqnEx implements Serializable {
     private Integer id;
     private Questionnaire questionnaire;
-    private List<QuestionEx> questionExs;
+    private List<QuestionEX> questionExs;
     private Integer questionId;
     private Integer questionnaireId;
     public Integer getId() {
@@ -27,11 +27,11 @@ public class QqnEx implements Serializable {
         this.questionnaire = questionnaire;
     }
 
-    public List<QuestionEx> getQuestionExs() {
+    public List<QuestionEX> getQuestionExs() {
         return questionExs;
    }
 
-    public void setQuestionExs(List<QuestionEx> questionExs) {
+    public void setQuestionExs(List<QuestionEX> questionExs) {
        this.questionExs = questionExs;
    }
 
