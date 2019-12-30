@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Question")
-@Api(description = "问卷管理")
+@Api(description = "题库管理")
 public class QuestionController {
     @Autowired
     private IQuestionService iQuestionService;
