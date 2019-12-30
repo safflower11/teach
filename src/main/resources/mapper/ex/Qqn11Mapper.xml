@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.Qqn11Mapper">
+    <resultMap id="sqqn" type="com.lut.teach.bean.ex.QqnEx">
+        <id column="id" property="id" />
+        <collection property="questionExs"
+                    ofType="com.lut.teach.bean.ex.QuestionEX"
+                    column="question_id"
+                    select="squ"></collection>
+    </resultMap>
+
+
+    <select id="findquestion" resultMap="sqqn">
+        select * from briup_qqn where id=#{id}
+    </select>
+    <select id="squ" resultType="com.lut.teach.bean.Question">
+        select * from briup_question where id = #{id}
+    </select>
+</mapper>

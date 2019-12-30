@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.QuestionnaireEXMapper">
+    <resultMap id="qn" type="com.lut.teach.bean.ex.QuestionnaireEX">
+        <id column="id"  property="id"></id>
+        <result column="name"  property="name"></result>
+        <result column="date"  property="date"></result>
+        <result column="description"  property="description"></result>
+        <collection property="qqns"
+                    ofType="com.lut.teach.bean.Qqn"
+                    column="id"
+                    select="selectQqn"></collection>
+
+    </resultMap>
+
+
+    <select id="showById" resultMap="qn">
+        select * from briup_questionnaire where id = #{id}
+    </select>
+    <select id="selectQqn" resultType="com.lut.teach.bean.Qqn">
+        select * from briup_qqn where questionnaire_id = #{id}
+    </select>
+
+</mapper>

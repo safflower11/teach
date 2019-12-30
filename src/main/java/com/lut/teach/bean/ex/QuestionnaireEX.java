@@ -1,8 +1,10 @@
 package com.lut.teach.bean.ex;
 
 import com.lut.teach.bean.Qqn;
+import com.lut.teach.bean.Question;
 
 import java.util.Date;
+import java.util.List;
 
 public class QuestionnaireEX {
     private Integer id;
@@ -13,7 +15,9 @@ public class QuestionnaireEX {
 
     private String description;
 
-    private Qqn qqns;
+    private List<Qqn> qqns;
+
+    private List<Question> questions;
 
     public Integer getId() {
         return id;
@@ -47,11 +51,19 @@ public class QuestionnaireEX {
         this.description = description;
     }
 
-    public Qqn getQqns() {
+    public List<Qqn> getQqns() {
         return qqns;
     }
 
-    public void setQqns(Qqn qqns) {
+    public void setQqns(List<Qqn> qqns) {
         this.qqns = qqns;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }
