@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.QqnExMapper">
+    <resultMap id="sqqn" type="com.lut.teach.bean.ex.QqnEx">
+        <id column="id" property="id" />
+        <association property="questionnaire" column="questionnaire_id" select="sqn"></association>
+        <collection property="questionExs"
+                    ofType="com.lut.teach.bean.ex.QuestionEx"
+                    column="question_id"
+                    select="squ"></collection>
+    </resultMap>
+   <resultMap id="sqo" type="com.lut.teach.bean.ex.QuestionEx">
+        <id column="id"  property="id" />
+        <result column="name" property="name" />
+        <result column="type" property="type" />
+        <collection property="optionsExs"
+                    ofType="com.lut.teach.bean.ex.OptionsEx"
+                    column="id"
+                    select="so"></collection>
+    </resultMap>
+
+    <select id="selectAll" resultMap="sqqn">
+        select * from briup_qqn
+    </select>
+    <select id="sqn" resultType="com.lut.teach.bean.Questionnaire">
+        select * from briup_questionnaire where id = #{id}
+    </select>
+    <select id="squ" resultMap="sqo">
+        select * from briup_question where id = #{id}
+    </select>
+    <select id="so" resultType="com.lut.teach.bean.ex.OptionsEx">
+        select * from briup_options where id = #{id}
+    </select>
+    <select id="selectmax" resultType="com.lut.teach.bean.Questionnaire">
+       select * from briup_questionnaire order by id desc limit 1
+    </select>
+    <select id="selectByQuId" resultType="com.lut.teach.bean.ex.QqnEx">
+       select * from briup_qqn where questionnaire_id = #{id}
+    </select>
+</mapper>

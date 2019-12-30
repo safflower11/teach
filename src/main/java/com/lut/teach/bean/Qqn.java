@@ -19,16 +19,8 @@ public class Qqn implements Serializable {
         this.id = id;
     }
 
-    public Integer getQuestionId() {
-        return questionId;
-    }
-
     public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
-    }
-
-    public Integer getQuestionnaireId() {
-        return questionnaireId;
     }
 
     public void setQuestionnaireId(Integer questionnaireId) {
@@ -48,4 +40,6 @@ public class Qqn implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+
 }
