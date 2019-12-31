@@ -25,4 +25,11 @@ public class SurveyController {
         List<SurveyEX> lists=iSurveyService.findAll();
         return MessageUtil.success(lists);
     }
+    @GetMapping("/showById")
+    @ApiOperation(value = "预览")
+    public Message showById(int id){
+        List<SurveyEX> lists=iSurveyService.showById(id);
+        return MessageUtil.success(lists);
+    }
+
 }

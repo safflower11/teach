@@ -3,6 +3,7 @@ package com.lut.teach.bean.ex;
 import com.lut.teach.bean.*;
 
 import java.util.Date;
+import java.util.List;
 
 public class SurveyEX {
     private Integer id;
@@ -22,6 +23,9 @@ public class SurveyEX {
     private Questionnaire questionnaire;
 
     private Teacher teacher;
+
+    private QuestionnaireEX questionnaireEX;
+
     public Integer getId() {
         return id;
     }
@@ -92,5 +96,13 @@ public class SurveyEX {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+
+    public QuestionnaireEX getQuestionnaireEX() {
+        return questionnaireEX;
+    }
+
+    public void setQuestionnaireEX(QuestionnaireEX questionnaireEX) {
+        this.questionnaireEX = questionnaireEX;
     }
 }

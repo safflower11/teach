@@ -34,4 +34,9 @@ public class SurveyServiceImpl implements ISurveyService {
         }
         return null;
     }
+
+    @Override
+    public List<SurveyEX> showById(int id) throws RuntimeException {
+        return surveyEXMapper.showById(id);
+    }
 }

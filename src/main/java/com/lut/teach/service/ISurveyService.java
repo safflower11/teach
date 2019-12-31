@@ -9,4 +9,5 @@ import java.util.List;
 public interface ISurveyService {
     List<SurveyEX> findAll() throws RuntimeException;
     List<SurveyEX> search(String word) throws RuntimeException;
+    List<SurveyEX> showById(int id) throws RuntimeException;
 }

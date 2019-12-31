@@ -21,13 +21,13 @@
   </resultMap>
   <select id="selectByQuId" resultMap="BaseResultMap">
        select * from briup_qqn where questionnaire_id = #{id}
-    </select>
+   </select>
   <select id="squ" resultMap="question">
         select * from briup_question where id = #{id}
-    </select>
-  <select id="so" resultType="com.lut.teach.bean.Region">
+   </select>
+  <select id="so" resultType="com.lut.teach.bean.Options">
         select * from briup_options where question_id=#{id}
-    </select>
+  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
