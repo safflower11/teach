@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lut.teach.mapper.ex.LiuyuEXMapper">
+    <resultMap id="vvv" type="com.lut.teach.mapper.ex.LiuyuEXMapper">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code" ></result>
+        <result column="surveyday"  property="surveyday"></result>
+        <result column="average"  property="average"></result>
+        <association property="clazz" column="clazz_id" select="selectclazz"></association>
+        <association property="course" column="course_id" select="selectcourse"></association>
+        <association property="questionnaire" column="questionnaire_id" select="selectquestionnaire"></association>
+        <association property="teacher" column="user_id" select="selecteacher"></association>
+    </resultMap>
+    <select id="shenheById" resultMap="vvv">
+        select * from briup_survey where id=#{id}
+    </select>
+    <select id="selectclazz" resultType="com.lut.teach.bean.Clazz">
+        select * from briup_clazz where id=#{id}
+    </select>
+    <select id="selectcourse" resultType="com.lut.teach.bean.Course">
+        select * from briup_course where id=#{id}
+    </select>
+    <select id="selectquestionnaire" resultType="com.lut.teach.bean.Questionnaire">
+        select * from briup_questionnaire where id=#{id}
+    </select>
+    <select id="selectteacher" resultType="com.lut.teach.bean.Teacher">
+        select * from briup_teacher where id=#{id}
+    </select>
+
+</mapper>
