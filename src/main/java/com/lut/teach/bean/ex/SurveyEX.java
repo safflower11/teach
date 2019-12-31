@@ -26,6 +26,7 @@ public class SurveyEX {
 
     private QuestionnaireEX questionnaireEX;
 
+    private List<AnswerEx> answerExes;
 
     public Integer getId() {
         return id;
@@ -105,5 +106,13 @@ public class SurveyEX {
 
     public void setQuestionnaireEX(QuestionnaireEX questionnaireEX) {
         this.questionnaireEX = questionnaireEX;
+    }
+
+    public List<AnswerEx> getAnswerExes() {
+        return answerExes;
+    }
+
+    public void setAnswerExes(List<AnswerEx> answerExes) {
+        this.answerExes = answerExes;
     }
 }
