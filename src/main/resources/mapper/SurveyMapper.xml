@@ -14,7 +14,12 @@
     <result column="average" jdbcType="DOUBLE" property="average" />
   </resultMap>
   <update id="update">
-       update briup_survey set department_id =#{departmentId},course_id=#{courseId},clazz_id=#{clazzId},user_id=#{userId},questionnaire_id=#{questionnaireId},code=#{code} where id= #{id}
+       update briup_survey set
+        department_id =#{departmentId},
+        course_id=#{courseId},clazz_id=#{clazzId},
+        user_id=#{userId},
+        questionnaire_id=#{questionnaireId},
+        code=#{code},status=#{status} where id= #{id}
   </update>
   <sql id="Example_Where_Clause">
     <where>
@@ -109,6 +114,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lut.teach.bean.Survey">
+    <selectKey keyColumn="id" keyProperty="id" order="AFTER" resultType="int">
+      select LAST_INSERT_ID()
+    </selectKey>
     insert into briup_survey (id, status, code, 
       surveyday, department_id, course_id, 
       clazz_id, user_id, questionnaire_id, 

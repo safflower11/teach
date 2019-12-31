@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Random;
 
 @Service
 public class RSurveyServiceImpl implements RSurveyService {
@@ -28,21 +29,27 @@ public class RSurveyServiceImpl implements RSurveyService {
    // }
 
     @Override
-    public void insert(int departid, int classid, int courseid, int questionid, int teachid, int code) throws RuntimeException {
+    public void insert(int departid, int classid, int courseid, int questionid, int teachid, Integer code) throws RuntimeException {
         Survey survey=new Survey();
         survey.setDepartmentId(departid);
         survey.setCourseId(courseid);
         survey.setClazzId(classid);
         survey.setQuestionnaireId(questionid);
         survey.setUserId(teachid);
-        survey.setCode(code);
+        int codes= (int) Math.round((Math.random()+1) * 1000);
+        if(code==null){
+            survey.setStatus("未开启");
+        }else {
+            survey.setCode(codes);
+            survey.setStatus("开启");
+        }
         survey.setSurveyday(new Date());
-        surveyMapper.insert(survey);
+        surveyMapper.insert(survey);;
 
     }
 
     @Override
-    public void update(int id,int departid, int classid, int courseid, int questionid, int teachid, int code) throws RuntimeException {
+    public void update(int id,int departid, int classid, int courseid, int questionid, int teachid, Integer code) throws RuntimeException {
         Survey survey=new Survey();
         survey.setId(id);
         survey.setDepartmentId(departid);
@@ -50,7 +57,14 @@ public class RSurveyServiceImpl implements RSurveyService {
         survey.setClazzId(classid);
         survey.setQuestionnaireId(questionid);
         survey.setUserId(teachid);
-        survey.setCode(code);
+        System.out.println(code);
+        int codes= (int) Math.round((Math.random()+1) * 1000);
+        if(code==null){
+            survey.setStatus("未开启");
+        }else {
+            survey.setCode(codes);
+            survey.setStatus("开启");
+        }
         survey.setSurveyday(new Date());
         surveyMapper.update(survey);
     }
