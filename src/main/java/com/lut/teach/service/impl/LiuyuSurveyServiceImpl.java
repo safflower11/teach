@@ -63,5 +63,17 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
         }
     }
 
+    @Override
+    public List<SurveyEX> findAllShen() throws RuntimeException {
+        List<SurveyEX> lists = liuyuEXMapper.findAllShen();
+        return lists;
+    }
+
+    @Override
+    public List<SurveyEX> findAllJian() throws RuntimeException {
+        List<SurveyEX> lists = liuyuEXMapper.findAllJian();
+        return lists;
+    }
+
 
 }

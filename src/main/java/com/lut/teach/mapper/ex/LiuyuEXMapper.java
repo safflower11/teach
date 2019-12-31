@@ -7,4 +7,8 @@ import java.util.List;
 public interface LiuyuEXMapper {
 
     List<SurveyEX> shenheById(int id);
+
+    List<SurveyEX> findAllShen();
+
+    List<SurveyEX> findAllJian();
 }

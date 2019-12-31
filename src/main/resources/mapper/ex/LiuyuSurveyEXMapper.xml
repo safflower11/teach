@@ -41,6 +41,13 @@
         select * from briup_answer where survey_id=#{id}
     </select>
 
+    <select id="findAllShen" resultMap="vvv">
+        SELECT * FROM briup_survey WHERE status ='审核通过' OR status='待审核'
+    </select>
+    <select id="findAllJian" resultMap="vvv">
+        SELECT * FROM briup_survey WHERE status ='开启' OR status='未开启'
+    </select>
+
 
 
 </mapper>
