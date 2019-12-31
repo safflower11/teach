@@ -6,8 +6,5 @@ import java.util.List;
 
 public interface LiuyuEXMapper {
 
-    //SurveyEX findById(int id);
-
-
     List<SurveyEX> shenheById(int id);
 }

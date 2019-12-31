@@ -42,4 +42,10 @@ public class LiuyuSurveyController {
         List<SurveyEX> surveyEXES = surveyService.shenheById(id);
         return MessageUtil.success(surveyEXES);
     }
+
+    @GetMapping("/shen")
+    public Message shen(int id,Integer c){
+        surveyService.insert(id,c);
+        return MessageUtil.success();
+    }
 }

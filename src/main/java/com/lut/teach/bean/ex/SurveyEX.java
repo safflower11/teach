@@ -28,6 +28,8 @@ public class SurveyEX {
 
     private QuestionnaireEX questionnaireEX;
 
+    private List<Answer> answers;
+
     public Integer getId() {
         return id;
     }
@@ -114,5 +116,13 @@ public class SurveyEX {
 
     public void setAverage(Double average) {
         this.average = average;
+    }
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
     }
 }

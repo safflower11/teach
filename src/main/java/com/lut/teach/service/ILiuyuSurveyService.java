@@ -10,4 +10,5 @@ public interface ILiuyuSurveyService {
     void endById(int id) throws RuntimeException;
 
     List<SurveyEX> shenheById(int id) throws RuntimeException;
+    void insert(int id,Integer c) throws RuntimeException;
 }

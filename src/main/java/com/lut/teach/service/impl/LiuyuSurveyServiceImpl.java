@@ -23,7 +23,8 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
         Survey survey = surveyMapper.selectByPrimaryKey(id);
 
         if(survey.getCode()==null){
-            survey.setCode(survey.getId());
+            int code=(int) Math.round((Math.random()+1)*1000);
+            survey.setCode(code);
             survey.setStatus("开启");
             surveyMapper.updateByPrimaryKey(survey);
         }else {
@@ -38,7 +39,7 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
         if(survey.getCode()==null){
             System.out.println("未开启，不能结束");
         }else {
-            survey.setStatus("未审核");
+            survey.setStatus("待审核");
             surveyMapper.updateByPrimaryKey(survey);
         }
     }
@@ -47,6 +48,19 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
     public List<SurveyEX> shenheById(int id) throws RuntimeException {
         return liuyuEXMapper.shenheById(id);
 
+    }
+
+    @Override
+    public void insert(int id,Integer c) throws RuntimeException {
+        Survey survey = surveyMapper.selectByPrimaryKey(id);
+
+        if(c==null&&survey.getCode()!=null){
+            survey.setStatus("审核不通过");
+            surveyMapper.updateByPrimaryKey(survey);
+        }else if(c!=null&&survey.getCode()!=null) {
+            survey.setStatus("审核通过");
+            surveyMapper.updateByPrimaryKey(survey);
+        }
     }
 
 
