@@ -20,4 +20,14 @@ public class VSurveyController {
         vSurveyService.delectById(id);
         return MessageUtil.success();
     }
+    @GetMapping("/deleteBatch")
+    @ApiOperation(value = "批量删除")
+    public Message deleteBatch(int[] ids){
+        for (int id:ids){
+            vSurveyService.delectById(id);
+            System.out.println(id);
+        }
+        return MessageUtil.success();
+    }
+
 }
