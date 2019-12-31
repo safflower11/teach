@@ -28,6 +28,18 @@ public class SurveyEX {
 
     private List<AnswerEx> answerExes;
 
+    private Integer departmentId;
+
+    private Integer courseId;
+
+    private Integer clazzId;
+
+    private Integer userId;
+
+    private Integer questionnaireId;
+
+    private Double average;
+
     public Integer getId() {
         return id;
     }
@@ -114,5 +126,53 @@ public class SurveyEX {
 
     public void setAnswerExes(List<AnswerEx> answerExes) {
         this.answerExes = answerExes;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public Integer getClazzId() {
+        return clazzId;
+    }
+
+    public void setClazzId(Integer clazzId) {
+        this.clazzId = clazzId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getQuestionnaireId() {
+        return questionnaireId;
+    }
+
+    public void setQuestionnaireId(Integer questionnaireId) {
+        this.questionnaireId = questionnaireId;
+    }
+
+    public Double getAverage() {
+        return average;
+    }
+
+    public void setAverage(Double average) {
+        this.average = average;
     }
 }

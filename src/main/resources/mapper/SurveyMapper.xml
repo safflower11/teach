@@ -13,6 +13,9 @@
     <result column="questionnaire_id" jdbcType="INTEGER" property="questionnaireId" />
     <result column="average" jdbcType="DOUBLE" property="average" />
   </resultMap>
+  <update id="update">
+       update briup_survey set department_id =#{departmentId},course_id=#{courseId},clazz_id=#{clazzId},user_id=#{userId},questionnaire_id=#{questionnaireId},code=#{code} where id= #{id}
+  </update>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

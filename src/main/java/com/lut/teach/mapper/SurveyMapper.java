@@ -27,4 +27,6 @@ public interface SurveyMapper {
     int updateByPrimaryKeySelective(Survey record);
 
     int updateByPrimaryKey(Survey record);
+
+    void update(Survey survey);
 }
