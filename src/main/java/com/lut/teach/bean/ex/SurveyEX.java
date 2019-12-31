@@ -26,6 +26,7 @@ public class SurveyEX {
 
     private QuestionnaireEX questionnaireEX;
 
+
     public Integer getId() {
         return id;
     }
