@@ -3,6 +3,7 @@ package com.lut.teach.web.controller;
 import com.lut.teach.bean.ex.SurveyEX;
 import com.lut.teach.service.ILiuyuSurveyService;
 import com.lut.teach.service.ISurveyService;
+import com.lut.teach.service.RSurveyService;
 import com.lut.teach.util.Message;
 import com.lut.teach.util.MessageUtil;
 import io.swagger.annotations.Api;
@@ -21,8 +22,10 @@ import java.util.List;
 public class SurveyController {
     @Autowired
     private ISurveyService iSurveyService;
+
+
     @Autowired
-    private ILiuyuSurveyService surveyService;
+    private RSurveyService rSurveyService;
 
     @GetMapping("/findAll")
     @ApiOperation(value = "查询所有课调信息")
@@ -37,45 +40,20 @@ public class SurveyController {
         return MessageUtil.success(lists);
     }
 
-    @PostMapping("/startById")
-    @ApiOperation(value = "启动")
-    public Message startById(int id){
-        surveyService.startById(id);
+
+
+    @ApiOperation(value = "添加课调")
+    @PostMapping("/add")
+    public Message add(int departid,int classid,int courseid,int questionid,int teachid,Integer code){
+        rSurveyService.insert(departid,classid,courseid,questionid,teachid,code);
+        System.out.println(code);
         return MessageUtil.success();
     }
-
-    @PostMapping("/endById")
-    @ApiOperation(value = "终止")
-    public Message endById(int id){
-        surveyService.endById(id);
+    @ApiOperation(value = "修改课调")
+    @PostMapping("/update")
+    public Message update(int id,int departid,int classid,int courseid,int questionid,int teachid,Integer code) {
+        rSurveyService.update(id, departid, classid, courseid, questionid, teachid, code);
         return MessageUtil.success();
-    }
-
-    @GetMapping("/shenhe")
-    @ApiOperation(value = "审核")
-    public Message shenhe(int id){
-        List<SurveyEX> surveyEXES = surveyService.shenheById(id);
-        return MessageUtil.success(surveyEXES);
-    }
-
-    @GetMapping("/shen")
-    @ApiOperation(value = "判断是否审核通过")
-    public Message shen(int id,Integer c){
-        surveyService.insert(id,c);
-        return MessageUtil.success();
-    }
-
-    @GetMapping("/findAllshen")
-    @ApiOperation(value = "显示所有未审核和审核通过的")
-    public Message findAllshen(){
-        List<SurveyEX> allShen = surveyService.findAllShen();
-        return MessageUtil.success(allShen);
-    }
-    @GetMapping("/findAlljian")
-    @ApiOperation(value = "显示所有未启动和启动的")
-    public Message findAlljian(){
-        List<SurveyEX> allJian = surveyService.findAllJian();
-        return MessageUtil.success(allJian);
     }
 
 }
