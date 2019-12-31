@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface SurveyEXMapper {
     List<SurveyEX> findAll();
-
     List<SurveyEX> showById(int id);
 }

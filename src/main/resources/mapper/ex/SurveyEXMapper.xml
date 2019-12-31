@@ -6,17 +6,17 @@
         <result column="status" property="status"></result>
         <result column="code" property="code" ></result>
         <result column="surveyday"  property="surveyday"></result>
+        <result property="average" column="average"></result>
+        <association property="department" column="department_id" select="selectdepartment"></association>
         <association property="clazz" column="clazz_id" select="selectclazz"></association>
         <association property="course" column="course_id" select="selectcourse"></association>
-        <association property="questionnaire" column="questionnaire_id" select="selectquestionnaire"></association>
-        <association property="teacher" column="teacher_id" select="selecteacher"></association>
-
+        <association property="teacher" column="user_id" select="selecteacher"></association>
         <association property="questionnaireEX"
                     column="questionnaire_id"
-                    select="qnid"></association>
+                    select="selectqnnaire"></association>
     </resultMap>
 
-    <resultMap id="qn" type="com.lut.teach.bean.ex.QuestionnaireEX">
+    <resultMap id="questionnaire" type="com.lut.teach.bean.ex.QuestionnaireEX">
         <id column="id"  property="id"></id>
         <result column="name"  property="name"></result>
         <result column="date"  property="date"></result>
@@ -30,11 +30,11 @@
     <resultMap id="qqn" type="com.lut.teach.bean.ex.QqnEx">
         <id column="id" property="id" />
         <result property="questionId" column="question_id" ></result>
-        <result column="questionnaire_id" property="questionnaireId" />
+        <result property="questionnaireId" column="questionnaire_id" />
         <collection property="questionExs"
                     ofType="com.lut.teach.bean.ex.QuestionEX"
                     column="question_id"
-                    select="squ"></collection>
+                    select="selectquestion"></collection>
     </resultMap>
 
     <resultMap id="question" type="com.lut.teach.bean.ex.QuestionEX">
@@ -44,8 +44,9 @@
         <collection property="options"
                     ofType="com.lut.teach.bean.Options"
                     column="id"
-                    select="so"></collection>
+                    select="selectoptions"></collection>
     </resultMap>
+
     <select id="findAll" resultMap="survey">
         select * from briup_survey
     </select>
@@ -55,26 +56,27 @@
     <select id="selectcourse" resultType="com.lut.teach.bean.Course">
         select * from briup_course where id=#{id}
     </select>
-    <select id="selectquestionnaire" resultType="com.lut.teach.bean.Questionnaire">
+    <select id="selectqnnaire" resultMap="questionnaire">
         select * from briup_questionnaire where id=#{id}
     </select>
-    <select id="selectteacher" resultType="com.lut.teach.bean.Teacher">
-        select * from briup_teacher where id=#{id}
+    <select id="selecteacher" resultType="com.lut.teach.bean.Teacher">
+        select * from briup_teacher where id =#{id}
     </select>
 
     <select id="showById" resultMap="survey">
         select * from briup_survey where id = #{id}
     </select>
-    <select id="qnid" resultMap="qn">
-        select * from briup_questionnaire where id = #{id}
-    </select>
+
     <select id="selectQqn" resultMap="qqn">
         select * from briup_qqn where questionnaire_id = #{id}
     </select>
-    <select id="squ" resultMap="question">
+    <select id="selectquestion" resultMap="question">
         select * from briup_question where id = #{id}
     </select>
-    <select id="so" resultType="com.lut.teach.bean.Options">
+    <select id="selectoptions" resultType="com.lut.teach.bean.Options">
         select * from briup_options where question_id=#{id}
+    </select>
+    <select id="selectdepartment" resultType="com.lut.teach.bean.Department">
+        select * from briup_department where id=#{id}
     </select>
 </mapper>

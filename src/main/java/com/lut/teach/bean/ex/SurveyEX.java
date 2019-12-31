@@ -20,9 +20,11 @@ public class SurveyEX {
 
     private Clazz clazz;
 
-    private Questionnaire questionnaire;
+    //private Questionnaire questionnaire;
 
     private Teacher teacher;
+
+    private Double average;
 
     private QuestionnaireEX questionnaireEX;
 
@@ -82,13 +84,13 @@ public class SurveyEX {
         this.clazz = clazz;
     }
 
-    public Questionnaire getQuestionnaire() {
+    /*public Questionnaire getQuestionnaire() {
         return questionnaire;
     }
 
     public void setQuestionnaire(Questionnaire questionnaire) {
         this.questionnaire = questionnaire;
-    }
+    }*/
 
     public Teacher getTeacher() {
         return teacher;
@@ -104,5 +106,13 @@ public class SurveyEX {
 
     public void setQuestionnaireEX(QuestionnaireEX questionnaireEX) {
         this.questionnaireEX = questionnaireEX;
+    }
+
+    public Double getAverage() {
+        return average;
+    }
+
+    public void setAverage(Double average) {
+        this.average = average;
     }
 }

@@ -14,4 +14,5 @@ public interface IQqnService {
     List<Qqn> selectById(int id) throws RuntimeException;
     Qqn selectBy(int id) throws RuntimeException;
 
+    
 }
