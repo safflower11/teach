@@ -24,42 +24,43 @@
     c.name like #{word} or q.name like #{word} or t.name like #{word})
 </select>
     <select id="selectword" resultMap="scc">
-    select z.name cname,d.name dname,s.average average
+    select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
     and (d.name like #{word} or z.name like #{word} )
     </select>
     <select id="selectdepartword" resultMap="scc">
-         select z.name cname,d.name dname,s.average average
+         select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
-    and (d.name like #{key1} or d.name like #{word} and z.name like #{word} )
+    and d.name like #{key1}
+    and (d.name like #{word} or z.name like #{word} )
     </select>
     <select id="selectclassword" resultMap="scc">
-         select z.name cname,d.name dname,s.average average
+         select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
     and (z.name like #{key2} or z.name like #{word})
     </select>
     <select id="selectdepart" resultMap="scc">
-         select z.name cname,d.name dname,s.average average
+         select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
     and (d.name like #{key1})
     </select>
     <select id="selectclass" resultMap="scc">
-         select z.name cname,d.name dname,s.average average
+         select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
     and (z.name like #{key2} )
     </select>
     <select id="findAllSurvey" resultMap="scc">
-        select z.name cname,d.name dname,s.average average
+        select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
