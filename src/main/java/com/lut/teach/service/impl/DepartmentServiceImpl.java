@@ -2,7 +2,6 @@ package com.lut.teach.service.impl;
 
 import com.lut.teach.bean.Department;
 import com.lut.teach.bean.ex.DepartmentEX;
-import com.lut.teach.bean.ex.DepartmentExample;
 import com.lut.teach.mapper.DepartmentMapper;
 import com.lut.teach.mapper.ex.DepartmentEXMapper;
 import com.lut.teach.service.IDepartmentService;

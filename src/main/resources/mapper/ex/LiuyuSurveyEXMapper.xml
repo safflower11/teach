@@ -7,6 +7,7 @@
         <result column="code" property="code" ></result>
         <result column="surveyday"  property="surveyday"></result>
         <result column="average"  property="average"></result>
+        <association property="department" column="department_id" select="selectdepartment"></association>
         <association property="clazz" column="clazz_id" select="selectclazz"></association>
         <association property="course" column="course_id" select="selectcourse"></association>
         <association property="questionnaireEX" column="questionnaire_id" select="selectquestionnaire"></association>
@@ -17,6 +18,10 @@
                     select="selectAnswer"></collection>
     </resultMap>
 
+
+    <select id="selectdepartment" resultType="com.lut.teach.bean.Department">
+        select * from briup_department where id=#{id}
+    </select>
 
     <select id="selectclazz" resultType="com.lut.teach.bean.Clazz">
         select * from briup_clazz where id=#{id}
@@ -33,6 +38,7 @@
     <select id="selectquestionnaire" resultType="com.lut.teach.bean.ex.QuestionnaireEX">
         select * from briup_questionnaire where id=#{id}
     </select>
+
     <select id="shenheById" resultMap="vvv">
         select * from briup_survey where id=#{id} and status='待审核'
     </select>
@@ -53,13 +59,16 @@
     </select>
 
     <select id="selectDCCQ" resultMap="vvv">
-        select t.name,c.name,e.name,d.name,q.name,s.surveyday,s.average
+        select *
     from briup_survey s,briup_department d,briup_course e,briup_clazz c,briup_questionnaire q,briup_teacher t
-    where s.department_id=d.id
+    where s.status ='审核通过' and s.department_id=d.id
     and s.course_id=e.id and s.clazz_id=c.id and s.questionnaire_id=q.id and s.user_id=t.id
-    and d.name like #{p1} and c.name like #{p2} and e.name like #{p3} and q.name like #{p4}
-    and (d.name like #{word} or e.name like #{word} or
-    c.name like #{word} or q.name like #{word})
+    and d.name like #{param1} and c.name like #{param2} and e.name like #{param3} and q.name like #{param4}
+    and (d.name like #{param5} or e.name like #{param5} or
+    c.name like #{param5} or q.name like #{param5})
     </select>
 
+    <select id="showById" resultMap="vvv">
+        select * from briup_survey where id=#{id} and status='审核通过'
+    </select>
 </mapper>

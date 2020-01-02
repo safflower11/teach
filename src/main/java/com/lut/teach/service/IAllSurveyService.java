@@ -9,4 +9,6 @@ public interface IAllSurveyService {
     List<SurveyEX> findAll() throws RuntimeException;
 
     List<SurveyEX> search(String key1, String key2, String key3, String key4, String word) throws RuntimeException;
+
+    List<SurveyEX> showById(int id) throws RuntimeException;
 }

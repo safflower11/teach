@@ -47,7 +47,7 @@ public class AllSurveyServiceImpl implements IAllSurveyService {
         } else {*/
             //根据年级或者班级或课程或问卷去查询
             word="%"+word+"%";
-            return  liuyuEXMapper.selectDCCQ(word);
+            return  liuyuEXMapper.selectDCCQ(key1,key2,key3,key4,word);
 
 
 
@@ -71,5 +71,10 @@ public class AllSurveyServiceImpl implements IAllSurveyService {
             return  allSurveyMapper.selectQusetionnaire(word);
         }*/
        // return null;
+    }
+
+    @Override
+    public List<SurveyEX> showById(int id) throws RuntimeException {
+        return liuyuEXMapper.showById(id);
     }
 }

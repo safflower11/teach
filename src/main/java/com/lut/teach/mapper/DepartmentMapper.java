@@ -1,7 +1,7 @@
 package com.lut.teach.mapper;
 
 import com.lut.teach.bean.Department;
-import com.lut.teach.bean.ex.DepartmentExample;
+import com.lut.teach.bean.DepartmentExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

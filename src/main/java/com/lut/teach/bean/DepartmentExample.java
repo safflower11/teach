@@ -1,4 +1,4 @@
-package com.lut.teach.bean.ex;
+package com.lut.teach.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
