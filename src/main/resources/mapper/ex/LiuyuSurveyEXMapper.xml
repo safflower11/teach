@@ -48,6 +48,18 @@
         SELECT * FROM briup_survey WHERE status ='开启' OR status='未开启'
     </select>
 
+    <select id="findAllAll" resultMap="vvv">
+        SELECT * FROM briup_survey WHERE status ='审核通过'
+    </select>
 
+    <select id="selectDCCQ" resultMap="vvv">
+        select t.name,c.name,e.name,d.name,q.name,s.surveyday,s.average
+    from briup_survey s,briup_department d,briup_course e,briup_clazz c,briup_questionnaire q,briup_teacher t
+    where s.department_id=d.id
+    and s.course_id=e.id and s.clazz_id=c.id and s.questionnaire_id=q.id and s.user_id=t.id
+    and d.name like #{p1} and c.name like #{p2} and e.name like #{p3} and q.name like #{p4}
+    and (d.name like #{word} or e.name like #{word} or
+    c.name like #{word} or q.name like #{word})
+    </select>
 
 </mapper>

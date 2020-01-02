@@ -1,17 +1,19 @@
 package com.lut.teach.service.impl;
 
 import com.lut.teach.bean.Survey;
+import com.lut.teach.bean.ex.ResultEx;
 import com.lut.teach.bean.ex.SurveyEX;
 import com.lut.teach.mapper.SurveyMapper;
 import com.lut.teach.mapper.ex.LiuyuEXMapper;
 import com.lut.teach.service.ILiuyuSurveyService;
+import com.lut.teach.service.ISurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
+public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService{
     @Autowired
     private SurveyMapper surveyMapper;
     @Autowired
@@ -76,6 +78,7 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
         List<SurveyEX> lists = liuyuEXMapper.findAllJian();
         return lists;
     }
+
 
 
 }

@@ -16,4 +16,6 @@ public interface ILiuyuSurveyService {
     List<SurveyEX> findAllShen() throws RuntimeException;
 
     List<SurveyEX> findAllJian() throws RuntimeException;
+
+
 }

@@ -11,4 +11,8 @@ public interface LiuyuEXMapper {
     List<SurveyEX> findAllShen();
 
     List<SurveyEX> findAllJian();
+
+    List<SurveyEX> findAllAll();
+
+    List<SurveyEX> selectDCCQ(String word);
 }
