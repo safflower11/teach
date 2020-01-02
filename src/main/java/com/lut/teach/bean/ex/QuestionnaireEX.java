@@ -3,10 +3,11 @@ package com.lut.teach.bean.ex;
 import com.lut.teach.bean.Qqn;
 import com.lut.teach.bean.Question;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class QuestionnaireEX {
+public class QuestionnaireEX implements Serializable {
     private Integer id;
 
     private String name;

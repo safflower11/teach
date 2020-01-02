@@ -1,6 +1,8 @@
 package com.lut.teach.bean.ex;
 
-public class CourseEx {
+import java.io.Serializable;
+
+public class CourseEx implements Serializable {
     private int id;
     private String name;
     private String description;

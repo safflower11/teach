@@ -3,7 +3,9 @@ package com.lut.teach.bean.ex;
 import com.lut.teach.bean.Clazz;
 import com.lut.teach.bean.Region;
 
-public class DepartmentEX {
+import java.io.Serializable;
+
+public class DepartmentEX implements Serializable {
     private Integer id;
 
     private String name;

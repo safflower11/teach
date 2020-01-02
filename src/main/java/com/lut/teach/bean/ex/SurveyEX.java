@@ -2,10 +2,11 @@ package com.lut.teach.bean.ex;
 
 import com.lut.teach.bean.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class SurveyEX {
+public class SurveyEX implements Serializable {
     private Integer id;
 
     private String status;

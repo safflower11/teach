@@ -4,9 +4,10 @@ package com.lut.teach.bean.ex;
 import com.lut.teach.bean.Question;
 
 import javax.swing.text.html.Option;
+import java.io.Serializable;
 import java.util.List;
 
-public class QuestionEX {
+public class QuestionEX implements Serializable {
     private Integer id;
 
     private String name;
