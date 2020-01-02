@@ -16,4 +16,7 @@ public interface ResultExMapper {
     List<ResultEx> selectdepart(String key1);
 
     List<ResultEx> selectclass(String key2);
+
+    List<ResultEx> selectdepartclass(String key1, String key2);
+
 }
