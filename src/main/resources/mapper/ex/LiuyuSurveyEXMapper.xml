@@ -34,7 +34,7 @@
         select * from briup_questionnaire where id=#{id}
     </select>
     <select id="shenheById" resultMap="vvv">
-        select * from briup_survey where id=#{id}
+        select * from briup_survey where id=#{id} and status='待审核'
     </select>
 
     <select id="selectAnswer" resultType="com.lut.teach.bean.Answer">

@@ -40,7 +40,14 @@ public class AnswerController {
     @ApiOperation(value = "审核")
     public Message shenhe(int id){
         List<SurveyEX> surveyEXES = surveyService.shenheById(id);
-        return MessageUtil.success(surveyEXES);
+        for(SurveyEX surveyEX:surveyEXES){
+            if("待审核".equals(surveyEX.getStatus())){
+                return MessageUtil.success(surveyEX);
+            }else {
+                return MessageUtil.success("已经审核过，不能再审核");
+            }
+        }
+        return MessageUtil.success();
     }
 
     @GetMapping("/shen")

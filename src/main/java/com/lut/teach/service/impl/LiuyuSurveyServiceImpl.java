@@ -53,6 +53,7 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
     @Override
     public void insert(int id,Integer c) throws RuntimeException {
         Survey survey = surveyMapper.selectByPrimaryKey(id);
+        if ("待审核".equals(survey.getStatus())) {
 
         if(c==null&&survey.getCode()!=null){
             survey.setStatus("审核不通过");
@@ -60,6 +61,7 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService {
         }else if(c!=null&&survey.getCode()!=null) {
             survey.setStatus("审核通过");
             surveyMapper.updateByPrimaryKey(survey);
+        }
         }
     }
 
