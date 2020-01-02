@@ -46,12 +46,13 @@
     and (z.name like #{key2} and z.name like #{word})
     </select>
     <select id="selectdepart" resultMap="scc">
-         select z.name cname,s.average average
+    select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
     and d.name like #{key1}
     </select>
+
     <select id="selectclass" resultMap="scc">
          select z.name cname,s.average average
     from briup_survey s,briup_department d,briup_clazz z

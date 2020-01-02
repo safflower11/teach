@@ -22,8 +22,10 @@ public class ResultServiceImpl implements IResultService {
         word = word == null ? "" : word;
         key1 = key1 == null ? "" : key1;
         key2 = key2 == null ? "" : key2;
-        if ((key1 == null || "".equals(key1)) &&(key2 == null || "".equals(key2))&& word == null || "".equals(word)) {
+        if ((key1 == null || "".equals(key1)) &&(key2 == null || "".equals(key2))&& (word == null || "".equals(word))) {
+            System.out.println(".......");
             return findAll();
+
         }else if ((key1 == null || "".equals(key1)) && (key2 == null || "".equals(key2))&& !"".equals(word)){
             //前面下拉框为空，后面不为空
 
@@ -43,15 +45,18 @@ public class ResultServiceImpl implements IResultService {
             System.out.println(word);
             List<ResultEx> resultExes2=resultExMapper.selectclassword(key2,word);
             return resultExes2;
-        }else if(!"".equals(key1) && (key2 == null || "".equals(key2))&& word == null || "".equals(word)) {
+        }else if(!"".equals(key1) && (key2 == null || "".equals(key2))&& (word == null || "".equals(word))){
             key1 = "%" + key1  + "%";
             List<ResultEx> resultExes3 = resultExMapper.selectdepart(key1);
             return resultExes3;
-        }else if(!"".equals(key2) && (key1 == null || "".equals(key1))&& word == null || "".equals(word)) {
+
+        }else if(!"".equals(key2) && (key1 == null || "".equals(key1))&& (word == null || "".equals(word))) {
             key2 = "%" + key2  + "%";
             List<ResultEx> resultExes4 = resultExMapper.selectclass(key2);
             return resultExes4;
-        }else if(!"".equals(key1) && !"".equals(key2) && word == null || "".equals(word)) {
+
+        }else if(!"".equals(key1) && !"".equals(key2) && (word == null || "".equals(word))){
+            key1 = "%" + key1  + "%";
             key2 = "%" + key2  + "%";
             List<ResultEx> resultExes4 = resultExMapper.selectdepartclass(key1,key2);
             return resultExes4;
