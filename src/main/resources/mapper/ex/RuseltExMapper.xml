@@ -9,8 +9,13 @@
     <result column="dname" property="dname"></result>
     <result column="qname" property="qname"></result>
     <result column="code" property="code"></result>
+    <result column="average" property="average"></result>
 
 </resultMap>
+    <resultMap id="scc" type="com.lut.teach.bean.ex.ClassCount">
+        <result column="cname" property="cname"></result>
+        <result column="average" property="average"></result>
+    </resultMap>
 <select id="selectByWord" resultMap="abb">
     select t.name tname,c.name cname,e.name ename,d.name dname,q.name qname,s.surveyday sdate,s.code code
     from briup_survey s,briup_department d,briup_course e,briup_clazz c,briup_questionnaire q,briup_teacher t
@@ -18,10 +23,45 @@
     and s.course_id=e.id and s.clazz_id=c.id and s.questionnaire_id=q.id and s.user_id=t.id and (d.name like #{word} or e.name like #{word} or
     c.name like #{word} or q.name like #{word} or t.name like #{word})
 </select>
-    <select id="findAllSurvey" resultType="com.lut.teach.bean.ex.ResultEx">
-        select t.name tname,c.name cname,e.name ename,d.name dname,q.name qname,s.surveyday sdate
-        from briup_survey s,briup_department d,briup_course e,briup_clazz c,briup_questionnaire q,briup_teacher t
-        where s.department_id=d.id
-        and s.course_id=e.id and s.clazz_id=c.id and s.questionnaire_id=q.id and s.user_id=t.id
+    <select id="selectword" resultMap="scc">
+    select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
+    and (d.name like #{word} or z.name like #{word} )
+    </select>
+    <select id="selectdepartword" resultMap="scc">
+         select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
+    and (d.name like #{key1} or d.name like #{word} and z.name like #{word} )
+    </select>
+    <select id="selectclassword" resultMap="scc">
+         select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
+    and (z.name like #{key2} or z.name like #{word})
+    </select>
+    <select id="selectdepart" resultMap="scc">
+         select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
+    and (d.name like #{key1})
+    </select>
+    <select id="selectclass" resultMap="scc">
+         select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
+    and (z.name like #{key2} )
+    </select>
+    <select id="findAllSurvey" resultMap="scc">
+        select z.name cname,d.name dname,s.average average
+    from briup_survey s,briup_department d,briup_clazz z
+    where s.department_id=d.id
+    and s.clazz_id=z.id
     </select>
 </mapper>

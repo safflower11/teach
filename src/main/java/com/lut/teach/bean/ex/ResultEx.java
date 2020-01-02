@@ -13,6 +13,7 @@ public class ResultEx implements Serializable {
     private String cname;
     private String qname;
     private String dname;
+    private double average;
 
     public Date getSdate() {
         return sdate;
@@ -68,5 +69,13 @@ public class ResultEx implements Serializable {
 
     public void setDname(String dname) {
         this.dname = dname;
+    }
+
+    public double getAverage() {
+        return average;
+    }
+
+    public void setAverage(double average) {
+        this.average = average;
     }
 }
