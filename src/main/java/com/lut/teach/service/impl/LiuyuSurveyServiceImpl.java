@@ -37,7 +37,7 @@ public class LiuyuSurveyServiceImpl implements ILiuyuSurveyService{
     @Override
     public void endById(int id) throws RuntimeException {
         Survey survey = surveyMapper.selectByPrimaryKey(id);
-        double code=(int)(Math.random()*5)+1;
+        double code=(int) Math.round((Math.random()+1)*10);
         if(survey.getCode()==null){
             System.out.println("未开启，不能结束");
         }else {
