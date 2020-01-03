@@ -13,7 +13,7 @@
 
     <collection property="answers"
                 ofType="com.lut.teach.bean.Answer"
-                column="id"
+                column="sid"
                 select="selectAnswer"></collection>
 
 </resultMap>
@@ -81,7 +81,7 @@
 
     <select id="findById" resultMap="abb">
         select t.name tname,c.name cname,e.name ename,d.name dname,q.name qname,
-        s.surveyday sdate,s.code code,s.average average,s.id id
+        s.surveyday sdate,s.code code,s.average average,s.id sid
         from briup_survey s,briup_department d,briup_course e,
              briup_clazz c,briup_questionnaire q,briup_teacher t
         where s.department_id=d.id and s.course_id=e.id
