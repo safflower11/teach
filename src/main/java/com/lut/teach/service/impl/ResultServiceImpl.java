@@ -1,6 +1,7 @@
 package com.lut.teach.service.impl;
 
 import com.lut.teach.bean.ex.ResultEx;
+import com.lut.teach.bean.ex.SurveyEX;
 import com.lut.teach.mapper.ex.ResultExMapper;
 import com.lut.teach.service.IResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,11 @@ public class ResultServiceImpl implements IResultService {
     public List<ResultEx> findAll() throws RuntimeException {
         List<ResultEx> resultExes=resultExMapper.findAllSurvey();
         return resultExes;
+    }
+
+    @Override
+    public ResultEx findById(int id) throws RuntimeException {
+        return resultExMapper.findById(id);
     }
 }
 

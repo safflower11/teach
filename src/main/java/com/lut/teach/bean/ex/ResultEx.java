@@ -1,7 +1,10 @@
 package com.lut.teach.bean.ex;
 
+import com.lut.teach.bean.Answer;
+
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class ResultEx implements Serializable {
     private Date sdate;
@@ -14,6 +17,16 @@ public class ResultEx implements Serializable {
     private String qname;
     private String dname;
     private double average;
+
+    private List<Answer> answers;
+
+    public List<Answer> getAnswers() {
+        return answers;
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 
     public Date getSdate() {
         return sdate;

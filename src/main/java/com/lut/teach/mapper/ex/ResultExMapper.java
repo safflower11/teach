@@ -1,6 +1,7 @@
 package com.lut.teach.mapper.ex;
 
 import com.lut.teach.bean.ex.ResultEx;
+import com.lut.teach.bean.ex.SurveyEX;
 
 import java.util.List;
 
@@ -18,5 +19,7 @@ public interface ResultExMapper {
     List<ResultEx> selectclass(String key2);
 
     List<ResultEx> selectdepartclass(String key1, String key2);
+
+    ResultEx findById(int id);
 
 }

@@ -60,6 +60,7 @@ public class ExcelController {
         cell.setCellType(CellType.STRING);
 
         cell.setCellValue("主讲老师课调");
+        sheet.addMergedRegion(new CellRangeAddress(0,0,0,8));
         //第二行
         XSSFRow row2 = sheet.createRow(1);
         XSSFCell cell1 = row2.createCell(0);
@@ -70,7 +71,7 @@ public class ExcelController {
         cell2.setCellType(CellType.STRING);
         cell2.setCellValue("隋欣然");
 
-        sheet.addMergedRegion(new CellRangeAddress(0,0,0,8));
+
         response.setHeader("content-Type", "application/vnd.ms-excel");
         // 下载文件的默认名称
         response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode("新的课调"+".xlsx", "utf-8"));

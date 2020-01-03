@@ -17,4 +17,5 @@ public interface LiuyuEXMapper {
     List<SurveyEX> selectDCCQ(String key1, String key2, String key3, String key4, String word);
 
     List<SurveyEX> showById(int id);
+
 }

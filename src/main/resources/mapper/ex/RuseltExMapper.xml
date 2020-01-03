@@ -11,6 +11,11 @@
     <result column="code" property="code"></result>
     <result column="average" property="average"></result>
 
+    <collection property="answers"
+                ofType="com.lut.teach.bean.Answer"
+                column="id"
+                select="selectAnswer"></collection>
+
 </resultMap>
     <resultMap id="scc" type="com.lut.teach.bean.ex.ClassCount">
         <result column="cname" property="cname"></result>
@@ -72,5 +77,19 @@
     from briup_survey s,briup_department d,briup_clazz z
     where s.department_id=d.id
     and s.clazz_id=z.id
+    </select>
+
+    <select id="findById" resultMap="abb">
+        select t.name tname,c.name cname,e.name ename,d.name dname,q.name qname,
+        s.surveyday sdate,s.code code,s.average average,s.id id
+        from briup_survey s,briup_department d,briup_course e,
+             briup_clazz c,briup_questionnaire q,briup_teacher t
+        where s.department_id=d.id and s.course_id=e.id
+              and s.clazz_id=c.id and s.questionnaire_id=q.id and s.user_id=t.id
+              and s.id =#{id}
+    </select>
+
+    <select id="selectAnswer" resultType="com.lut.teach.bean.Answer">
+        select * from briup_answer where survey_id=#{id}
     </select>
 </mapper>

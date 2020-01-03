@@ -3,6 +3,8 @@ package com.lut.teach.web.controller;
 import com.lut.teach.bean.ex.ResultEx;
 import com.lut.teach.bean.ex.SurveyEX;
 import com.lut.teach.service.IAllSurveyService;
+import com.lut.teach.service.ILiuyuSurveyService;
+import com.lut.teach.service.IResultService;
 import com.lut.teach.util.Message;
 import com.lut.teach.util.MessageUtil;
 import io.swagger.annotations.Api;
@@ -23,7 +25,8 @@ public class AllSurveyController {
 
     @Autowired
     private IAllSurveyService allSurveyService;
-
+    @Autowired
+    private IResultService resultService;
     @GetMapping("/search")
     @ApiOperation(value = "搜索")
     @ApiImplicitParams(
@@ -49,15 +52,15 @@ public class AllSurveyController {
     @GetMapping("/show")
     @ApiOperation(value = "预览")
     public Message show(int id){
-        List<SurveyEX> surveyEXES = allSurveyService.showById(id);
-        for(SurveyEX surveyEX:surveyEXES){
-            if("审核通过".equals(surveyEX.getStatus())){
-                return MessageUtil.success(surveyEX);
-            }else {
-                return MessageUtil.success();
-            }
-        }
-        return MessageUtil.success();
+        ResultEx byId = resultService.findById(id);
+        return MessageUtil.success(byId);
+    }
+
+    @GetMapping("/download")
+    @ApiOperation(value = "下载")
+    public Message download(int id){
+        ResultEx byId = resultService.findById(id);
+        return MessageUtil.success(byId);
     }
 
 
