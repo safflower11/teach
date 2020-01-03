@@ -3,6 +3,7 @@ package com.lut.teach.web.controller;
 
 import io.swagger.annotations.Api;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -49,5 +50,33 @@ public class ExcelController {
 
         ServletOutputStream stream = response.getOutputStream();
         workbook.write(stream);
+    }
+    @GetMapping("/download2")
+    public void download2(HttpServletResponse response) throws IOException {
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet();
+        XSSFRow row = sheet.createRow(0);
+        XSSFCell cell = row.createCell(0);
+        cell.setCellType(CellType.STRING);
+
+        cell.setCellValue("主讲老师课调");
+        //第二行
+        XSSFRow row2 = sheet.createRow(1);
+        XSSFCell cell1 = row2.createCell(0);
+        cell1.setCellType(CellType.STRING);
+        cell1.setCellValue("教师名称");
+
+        XSSFCell cell2 = row2.createCell(1);
+        cell2.setCellType(CellType.STRING);
+        cell2.setCellValue("隋欣然");
+
+        sheet.addMergedRegion(new CellRangeAddress(0,0,0,8));
+        response.setHeader("content-Type", "application/vnd.ms-excel");
+        // 下载文件的默认名称
+        response.setHeader("Content-Disposition", "attachment;filename="+ URLEncoder.encode("新的课调"+".xlsx", "utf-8"));
+
+        ServletOutputStream stream = response.getOutputStream();
+        workbook.write(stream);
+
     }
 }
